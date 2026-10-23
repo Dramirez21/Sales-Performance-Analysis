@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+*.duckdb
+*.db
+*.sqlite
+.ipynb_checkpoints/
+.DS_Store
+data/raw/*.csv

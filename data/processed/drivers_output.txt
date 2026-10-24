@@ -1,0 +1,101 @@
+﻿
+>>> -- 1. Win rate by product (closed deals only)
+┌────────────────┬───────┬───────┬──────────────┐
+│    product     │  won  │ lost  │ win_rate_pct │
+│    varchar     │ int64 │ int64 │    double    │
+├────────────────┼───────┼───────┼──────────────┤
+│ MG Special     │   793 │   430 │         64.8 │
+│ GTX Plus Pro   │   479 │   266 │         64.3 │
+│ GTX Basic      │   915 │   521 │         63.7 │
+│ GTX Pro        │   729 │   418 │         63.6 │
+│ GTX Plus Basic │   653 │   398 │         62.1 │
+│ MG Advanced    │   654 │   430 │         60.3 │
+│ GTK 500        │    15 │    10 │         60.0 │
+└────────────────┴───────┴───────┴──────────────┘
+
+
+>>> -- 2. Win rate by manager
+┌──────────────────┬─────────────────┬──────────────┬──────────────┐
+│     manager      │ regional_office │ closed_deals │ win_rate_pct │
+│     varchar      │     varchar     │    int64     │    double    │
+├──────────────────┼─────────────────┼──────────────┼──────────────┤
+│ Cara Losch       │ East            │          745 │         64.4 │
+│ Summer Sewald    │ West            │         1287 │         64.3 │
+│ Celia Rouche     │ West            │          962 │         63.4 │
+│ Dustin Brinkmann │ Central         │         1186 │         63.0 │
+│ Melvin Marxen    │ Central         │         1418 │         62.2 │
+│ Rocco Neubert    │ East            │         1113 │         62.1 │
+└──────────────────┴─────────────────┴──────────────┴──────────────┘
+
+
+>>> -- 3. Product mix: top agent vs. lowest-avg-deal team vs. everyone else
+┌───────────────────────┬────────────────┬───────┬────────────────────┬─────────┐
+│          grp          │    product     │ deals │ pct_of_group_deals │ revenue │
+│        varchar        │    varchar     │ int64 │       double       │ int128  │
+├───────────────────────┼────────────────┼───────┼────────────────────┼─────────┤
+│ Darcel Schlecht       │ GTX Pro        │   160 │               45.8 │  773129 │
+│ Darcel Schlecht       │ GTX Plus Pro   │    33 │                9.5 │  176844 │
+│ Darcel Schlecht       │ MG Advanced    │    36 │               10.3 │  120360 │
+│ Darcel Schlecht       │ GTX Plus Basic │    56 │               16.0 │   61207 │
+│ Darcel Schlecht       │ GTX Basic      │    36 │               10.3 │   20124 │
+│ Darcel Schlecht       │ MG Special     │    28 │                8.0 │    1550 │
+│ Everyone else         │ GTX Pro        │   569 │               18.1 │ 2737449 │
+│ Everyone else         │ GTX Plus Pro   │   363 │               11.6 │ 2004304 │
+│ Everyone else         │ MG Advanced    │   483 │               15.4 │ 1637798 │
+│ Everyone else         │ GTX Plus Basic │   520 │               16.5 │  561186 │
+│ Everyone else         │ GTK 500        │    15 │                0.5 │  400612 │
+│ Everyone else         │ GTX Basic      │   715 │               22.8 │  390383 │
+│ Everyone else         │ MG Special     │   477 │               15.2 │   26225 │
+│ Team Dustin Brinkmann │ MG Advanced    │   135 │               18.1 │  458229 │
+│ Team Dustin Brinkmann │ GTX Plus Pro   │    83 │               11.1 │  448503 │
+│ Team Dustin Brinkmann │ GTX Basic      │   164 │               22.0 │   88756 │
+│ Team Dustin Brinkmann │ GTX Plus Basic │    77 │               10.3 │   82882 │
+│ Team Dustin Brinkmann │ MG Special     │   288 │               38.6 │   15993 │
+└───────────────────────┴────────────────┴───────┴────────────────────┴─────────┘
+  18 rows                                                             5 columns
+
+
+>>> -- 4. Sales cycle length by product (days from engage to close)
+┌────────────────┬───────┬───────────────────┐
+│    product     │ deals │ avg_days_to_close │
+│    varchar     │ int64 │      double       │
+├────────────────┼───────┼───────────────────┤
+│ GTK 500        │    15 │              64.1 │
+│ GTX Basic      │   915 │              54.8 │
+│ MG Advanced    │   654 │              51.8 │
+│ GTX Plus Basic │   653 │              51.8 │
+│ GTX Plus Pro   │   479 │              51.7 │
+│ MG Special     │   793 │              51.3 │
+│ GTX Pro        │   729 │              48.3 │
+└────────────────┴───────┴───────────────────┘
+
+
+>>> -- 5. Where in the quarter deals close (complete quarters only, Apr to Dec)
+┌──────────────────┬───────┬─────────┐
+│ month_in_quarter │ deals │ revenue │
+│      int64       │ int64 │ int128  │
+├──────────────────┼───────┼─────────┤
+│                1 │   872 │ 2150844 │
+│                2 │  1290 │ 3014715 │
+│                3 │  1545 │ 3705303 │
+└──────────────────┴───────┴─────────┘
+
+
+>>> -- 6. Revenue per account by sector
+┌────────────────────┬──────────┬─────────┬─────────────────────┐
+│       sector       │ accounts │ revenue │ revenue_per_account │
+│      varchar       │  int64   │ int128  │       double        │
+├────────────────────┼──────────┼─────────┼─────────────────────┤
+│ software           │        7 │ 1077934 │            153991.0 │
+│ technology         │       12 │ 1515487 │            126291.0 │
+│ finance            │        8 │  950908 │            118864.0 │
+│ marketing          │        8 │  922321 │            115290.0 │
+│ entertainment      │        6 │  689007 │            114835.0 │
+│ medical            │       12 │ 1359595 │            113300.0 │
+│ retail             │       17 │ 1867528 │            109855.0 │
+│ employment         │        4 │  436174 │            109044.0 │
+│ telecommunications │        6 │  653574 │            108929.0 │
+│ services           │        5 │  533006 │            106601.0 │
+└────────────────────┴──────────┴─────────┴─────────────────────┘
+  10 rows                                             4 columns
+

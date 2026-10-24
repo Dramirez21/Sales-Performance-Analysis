@@ -35,7 +35,7 @@ To answer it, the analysis breaks revenue down into measurable pieces:
 
 [Maven Analytics CRM Sales Opportunities](link-to-dataset): four related
 tables (`accounts`, `products`, `sales_teams`, `sales_pipeline`) with
-8,800 deals across 85 accounts, 7 products, and 35 sales agents. Of those,
+8,800 deals across 85 accounts, 7 products, and 35 sales agents on the roster (30 with pipeline activity). Of those,
 4,238 deals were won, totaling $10,005,534 in revenue.
 
 ## Tools
@@ -55,6 +55,7 @@ tables (`accounts`, `products`, `sales_teams`, `sales_pipeline`) with
 | Sector typo | `technolgy` (12 accounts) | Corrected to `technology` |
 | Country typo | `Philipines` (1 account) | Corrected to `Philippines` |
 | Time span | Close dates run Mar to Dec 2017 | Within-year trends only, no year-over-year |
+| Inactive agents | 5 of 35 agents on the roster have no deals in the pipeline | Left in the roster table, naturally excluded from agent-level analysis |
 | Reconciliation | Cleaned `won_deals` view ties to raw Won totals (4,238 deals, $10,005,534) | Verified |
 
 ## Key Findings

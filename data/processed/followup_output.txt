@@ -1,0 +1,66 @@
+﻿
+>>> -- 1. Does Dustin Brinkmann's team work GTX Pro in any stage
+┌────────────────┬─────────────┬───────┐
+│    product     │ deal_stage  │ deals │
+│    varchar     │   varchar   │ int64 │
+├────────────────┼─────────────┼───────┤
+│ GTX Basic      │ Engaging    │    38 │
+│ GTX Basic      │ Lost        │    88 │
+│ GTX Basic      │ Prospecting │    38 │
+│ GTX Basic      │ Won         │   164 │
+│ GTX Plus Basic │ Engaging    │    18 │
+│ GTX Plus Basic │ Lost        │    48 │
+│ GTX Plus Basic │ Prospecting │    18 │
+│ GTX Plus Basic │ Won         │    77 │
+│ GTX Plus Pro   │ Engaging    │    18 │
+│ GTX Plus Pro   │ Lost        │    54 │
+│ GTX Plus Pro   │ Prospecting │    13 │
+│ GTX Plus Pro   │ Won         │    83 │
+│ MG Advanced    │ Engaging    │    41 │
+│ MG Advanced    │ Lost        │   103 │
+│ MG Advanced    │ Prospecting │    55 │
+│ MG Advanced    │ Won         │   135 │
+│ MG Special     │ Engaging    │    78 │
+│ MG Special     │ Lost        │   146 │
+│ MG Special     │ Prospecting │    80 │
+│ MG Special     │ Won         │   288 │
+└────────────────┴─────────────┴───────┘
+  20 rows                    3 columns
+
+
+>>> -- 2. Who sells GTK 500 in any stage
+┌───────────────────┬───────────────┬────────────┬───────┐
+│    sales_agent    │    manager    │ deal_stage │ deals │
+│      varchar      │    varchar    │  varchar   │ int64 │
+├───────────────────┼───────────────┼────────────┼───────┤
+│ Elease Gluck      │ Celia Rouche  │ Engaging   │     7 │
+│ Elease Gluck      │ Celia Rouche  │ Won        │     7 │
+│ Elease Gluck      │ Celia Rouche  │ Lost       │     5 │
+│ Markita Hansen    │ Celia Rouche  │ Engaging   │     5 │
+│ Rosalina Dieter   │ Celia Rouche  │ Won        │     5 │
+│ Markita Hansen    │ Celia Rouche  │ Won        │     3 │
+│ Markita Hansen    │ Celia Rouche  │ Lost       │     2 │
+│ Rosalina Dieter   │ Celia Rouche  │ Engaging   │     2 │
+│ Darcel Schlecht   │ Melvin Marxen │ Lost       │     1 │
+│ Marty Freudenburg │ Melvin Marxen │ Engaging   │     1 │
+│ Rosalina Dieter   │ Celia Rouche  │ Lost       │     1 │
+│ Corliss Cosme     │ Cara Losch    │ Lost       │     1 │
+└───────────────────┴───────────────┴────────────┴───────┘
+  12 rows                                      4 columns
+
+
+>>> -- 3. Closed deals and win rate for the busiest agents
+┌────────────────────┬──────────────────┬──────────────┬──────────────┐
+│    sales_agent     │     manager      │ closed_deals │ win_rate_pct │
+│      varchar       │     varchar      │    int64     │    double    │
+├────────────────────┼──────────────────┼──────────────┼──────────────┤
+│ Darcel Schlecht    │ Melvin Marxen    │          553 │         63.1 │
+│ Vicki Laflamme     │ Celia Rouche     │          347 │         63.7 │
+│ Anna Snelling      │ Dustin Brinkmann │          336 │         61.9 │
+│ Kary Hendrixson    │ Summer Sewald    │          335 │         62.4 │
+│ Donn Cantrell      │ Rocco Neubert    │          275 │         57.5 │
+│ Kami Bicknell      │ Summer Sewald    │          272 │         64.0 │
+│ Jonathan Berthelot │ Melvin Marxen    │          264 │         64.8 │
+│ Versie Hillebrand  │ Dustin Brinkmann │          264 │         66.7 │
+└────────────────────┴──────────────────┴──────────────┴──────────────┘
+

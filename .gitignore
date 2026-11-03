@@ -225,3 +225,6 @@ __marimo__/
 .ipynb_checkpoints/
 .DS_Store
 data/raw/*.csv
+
+data/processed/*.csv
+data/processed/*.txt

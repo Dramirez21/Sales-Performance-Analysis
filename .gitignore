@@ -228,3 +228,9 @@ data/raw/*.csv
 
 data/processed/*.csv
 data/processed/*.txt
+dashboard/*.twbx
+
+*.hyper
+*.twb
+*.twbx
+*.twbr
